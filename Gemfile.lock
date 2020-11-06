@@ -56,9 +56,14 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    autoprefixer-rails (10.0.1.3)
+      execjs
     bindex (0.8.1)
     bootsnap (1.4.9)
       msgpack (~> 1.0)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
     builder (3.2.4)
     byebug (11.1.3)
     coffee-rails (5.0.0)
@@ -213,6 +218,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
+  bootstrap-sass
   byebug
   coffee-rails
   jbuilder (~> 2.7)
