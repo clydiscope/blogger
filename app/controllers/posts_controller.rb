@@ -20,7 +20,7 @@ class PostsController < ApplicationController
       redirect_to @post
     else
     
-      flash.now[:alert] = "There error an error creative the post. Please try again"
+      flash.now[:alert] = "There's an error creative the post. Please try again."
       render :new
     end
   end
