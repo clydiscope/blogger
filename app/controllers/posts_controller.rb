@@ -20,7 +20,7 @@ class PostsController < ApplicationController
       redirect_to @post
     else
     
-      flash.now[:alert] = "There error an error creative the post. Please try again"
+      flash.now[:alert] = "There was an error creating the post. Please try again"
       render :new
     end
   end
@@ -29,9 +29,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
   
-  def post_params
-    params.permit(:title, :body)
-  end
+
   
   def update
     @post = Post.find(params[:id])
@@ -57,6 +55,11 @@ class PostsController < ApplicationController
       flash.now[:alert] = "There was an error deleting the post."
       render :show
     end
+  end
+  
+  
+  def post_params
+    params.permit(:title, :body)
   end
   
 end

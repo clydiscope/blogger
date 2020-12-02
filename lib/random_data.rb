@@ -16,6 +16,15 @@ module RandomData
 		sentence.capitalize << "."
 	end
 	
+	def self.random_question
+		strings = []
+		rand(2..10).times do
+			strings << random_word
+		end
+		question = strings.join(" ")
+		question.capitalize << "?"
+	end
+	
 	def self.random_paragraph
 		sentences = []
 		rand(4..6).times do
