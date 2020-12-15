@@ -1,0 +1,31 @@
+<h1>Edit Sponsored Post</h1>
+
+<div class="row">
+	<div class="col-md-4">
+		<p>Sponsored Post Guidelines</p>
+		<ul>
+			<li>Use Paragraphs!</li>
+			<li>100 Word Limit</li>
+			<li>Add a picture!</li>
+		</ul>
+	</div >
+	<div class="col-md-8">
+		<%= form_for [@sponsored_post.topic, @post] do |f| %>
+			<div class="form-group">
+				<%= f.label :title %>
+				<%= f.text_field :title, class:'form_control', placeholder:"Enter sponsored title."%>
+			</div>
+			<div class="form-group">
+				<%= f.label :body %>
+				<%= f.text_area :body, class: 'form_control', placeholder: "Enter sponsored post body" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :price %>
+				<%= f.number_field :price, min: 1, max: 10, class: 'form-control', placeholder: "$" %>
+			</div>
+			<div class="form-group">
+				<%= f.submit "Save", class: 'btn btn-success' %>
+			</div>
+		<% end %>
+	</div>
+</div>
