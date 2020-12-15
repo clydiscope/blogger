@@ -69,7 +69,7 @@ RSpec.describe PostsController, type: :controller do
     end
     
     it "assigns post to updated to @post" do
-      get :edit, params: {topic_id: my_topic.id, id: my, _post.id}
+      get :edit, params: {topic_id: my_topic.id, id: my_post.id}
       
       post_instance = assigns(:post)
       
