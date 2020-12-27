@@ -20,8 +20,12 @@ class UsersController < ApplicationController
 		end
 	end
 	
-#	def user_params
-#		params.permit(:name, :email, :password, :password_confirmation)
-#	end
+	def confirm
+		@user = User.new
+		@user.name = params[:user][:name]
+		@user.email = params[:user][:email]
+		@user.password = params[:user][:password]
+		@user.password_confirmation = params[:user][:user_confirmation]
+	end
 
 end
