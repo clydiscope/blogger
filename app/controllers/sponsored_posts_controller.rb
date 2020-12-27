@@ -14,11 +14,11 @@ class SponsoredPostsController < ApplicationController
     @sponsored_post.topic = @topic
   
     if @sponsored_post.save
-      flash[:notice] = "Sponsored Post save successfully"
+      flash[:notice] = "Sponsored post saved successfully"
       redirect_to [@topic, @sponsored_post]
     
     else
-      flash.now[:alert] = "There's an error creating the post. Please try again."
+      flash.now[:alert] = "There was an error creating the post. Please try again."
       render :new
     end
   end
@@ -35,7 +35,7 @@ class SponsoredPostsController < ApplicationController
     @sponsored_post.price = params[:sponsored_post][:price]
     
     if @sponsored_post.save
-      flash[:notice] = "Post updated successfully"
+      flash[:notice] = "Sponsored Post updated successfully"
       redirect_to [@sponsored_post.topic, @sponsored_post]
     else
       flast[:alert] = "There was an error updating your post."

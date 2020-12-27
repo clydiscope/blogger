@@ -10,16 +10,16 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = Post.new(post_params)
+    @post = Post.new
+    @post.title = params[:post][:title]
+    @post.body = params[:post][:body]
     @topic = Topic.find(params[:topic_id])
     @post.topic = @topic
     if @post.save
-    
-      flash[:notice] = "Post saved successfully"
+      flash[:notice] = "Post saved successfully."
       redirect_to [@topic, @post]
     else
-    
-      flash.now[:alert] = "There error an error creative the post. Please try again"
+      flash.now[:alert] = "There was an error creating the post. Please try again."
       render :new
     end
   end
@@ -28,17 +28,14 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
   
-  def post_params
-    params.permit(:title, :body)
-  end
-  
+
   def update
     @post = Post.find(params[:id])
     @post.title = params[:post][:title]
     @post.body = params[:post][:body]
     
     if @post.save
-      flash[:notice] = "Post was updated successfully"
+      flash[:notice] = "Post was updated successfully."
       redirect_to [@post.topic, @post]
     else
       flash.now[:alert] = "There was an error saving the post. Please try again."

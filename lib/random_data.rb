@@ -3,12 +3,12 @@ module RandomData
 	def self.random_word
 		letters = ('a'..'z').to_a
 		letters.shuffle!
-		letters[0,rand(3..8)].join
+		letters[0,rand(3..10)].join
 	end
 
 	def self.random_sentence
 		strings = []
-		rand(2..10).times do
+		rand(3..10).times do
 			strings << random_word
 		end
 		
@@ -18,7 +18,7 @@ module RandomData
 	
 	def self.random_paragraph
 		sentences = []
-		rand(4..6).times do
+		rand(7..10).times do
 			sentences << random_sentence
 		end
 		
