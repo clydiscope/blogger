@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_01_145915) do
+ActiveRecord::Schema.define(version: 2021_01_06_035937) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_01_01_145915) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "role"
   end
 
   add_foreign_key "comments", "posts"

@@ -1,6 +1,8 @@
 require 'random_data'
 
 # Users
+
+
 5.times do
 	User.create!(
 		name:			RandomData.random_name,
@@ -8,6 +10,20 @@ require 'random_data'
 		password:	RandomData.random_sentence
 	)
 end
+
+admin = User.create!(
+	name:			'Admin User',
+	email:		'admin@example.com',
+	password:	'helloworld',
+	role:			'admin'
+)
+
+member = User.create!(
+	name:			'Member User',
+	email:		'member@emaple.com',
+	password:	'helloworld'
+)
+
 users = User.all
 
 # Topic
