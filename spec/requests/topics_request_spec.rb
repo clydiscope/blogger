@@ -262,4 +262,65 @@ RSpec.describe TopicsController, type: :controller do
 			end
 		end
 	end
+	
+	context "moderator user" do
+		before do
+			moderator = User.create!(name: "moderator user", email: "moderator@blogger.com", password: "password", role: :moderator)
+			create_session(moderator)
+		end
+		
+		describe "GET new" do
+			it 'returns http success' do
+				get :new
+				expect(response).to redirect_to(topics_path)
+			end
+		end
+		
+		describe "POST create" do
+			it 'returns http redirect' do
+				post :create, params: { name: RandomData.random_sentence, description: RandomData.random_paragraph }
+				expect(response).to redirect_to(topics_path)
+			end
+		end
+		
+		describe "DELETE destroy" do
+			it "returns http redirect" do
+				delete :destroy, params: { id: my_topic.id }
+				expect(response).to redirect_to(topics_path)
+			end
+		end
+		
+		describe "GET edit" do
+			it "returns http status" do
+				get :edit, params: { id: my_topic.id }
+				expect(response).to have_http_status(:success)
+			end
+			
+			it "renders the #edit view" do
+				get :edit, params: {id: my_topic.id}
+				topic_instance = assigns(:topic)
+				
+				expect(topic_instance.id).to eq my_topic.id
+				expect(topic_instance.name).to eq my_topic.name
+				expect(topic_instance.description).to eq my_topic.description 
+			end
+		end
+		
+		describe "PUT update" do
+			it "updates topic with expected attributes" do
+				new_name = RandomData.random_sentence
+				new_description = RandomData.random_paragraph
+				
+				put :update, params: { id: my_topic.id, topic: {name: new_name, description: new_description} }
+				
+				updated_topic = assigns(:topic)
+				
+				expect(updated_topic.id).to eq my_topic.id
+				expect(updated_topic.name).to eq new_name
+				expect(updated_topic.description).to eq new_description
+			end
+		end
+	end
+	
+	
 end
