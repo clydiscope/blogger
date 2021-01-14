@@ -4,6 +4,13 @@ Rails.application.routes.draw do
   resources :posts, except: [:index]
   resources :sponsored_posts, except: [:index]
   end
+  
+  
+  #shallow nesting
+  resources :posts, only: [] do   #no posts/:id routes
+    resources :comments, only: [:create, :destroy]
+  end
+  
   get 'about' => 'welcome#about'
   root  'welcome#index'
   

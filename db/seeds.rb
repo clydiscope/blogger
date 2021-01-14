@@ -20,7 +20,7 @@ admin = User.create!(
 
 member = User.create!(
 	name:			'Member User',
-	email:		'member@emaple.com',
+	email:		'member@example.com',
 	password:	'helloworld'
 )
 
@@ -36,7 +36,7 @@ end
 topics = Topic.all
 
 
-# Topic
+# Post
 50.times do
 
 	Post.create!(
@@ -49,11 +49,12 @@ end
 posts = Post.all
 
 
-# Posts
+# Comment
 
 100.times do
 
 	Comment.create!(
+		user: users.sample,
 		post: posts.sample,													#Picks a random post from the array
 		body: RandomData.random_paragraph
 	)
@@ -68,6 +69,7 @@ end
 		price: rand(1..10)
 	)	
 end
+
 
 user = User.first
 user.update_attributes!(
