@@ -26,11 +26,22 @@ member = User.create!(
 
 users = User.all
 
+#labels
+
+20.times do
+	Label.create!(
+		name: RandomData.random_word
+	)
+labels = Label.all
+
+end
+
 # Topic
 15.times do
 	Topic.create!(
 		name: 				RandomData.random_sentence,
-		description:	RandomData.random_paragraph
+		description:	RandomData.random_paragraph,
+#		label:				labels.sample
 	)
 end
 topics = Topic.all
@@ -40,10 +51,11 @@ topics = Topic.all
 50.times do
 
 	Post.create!(
-		user: users.sample,
-		topic: topics.sample,
-		title: RandomData.random_sentence,
-		body: RandomData.random_paragraph
+		user: 	users.sample,
+		topic: 	topics.sample,
+		title: 	RandomData.random_sentence,
+		body: 	RandomData.random_paragraph,
+#		label:	labels.sample
 	)
 end
 posts = Post.all
