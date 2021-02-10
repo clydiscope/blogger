@@ -63,12 +63,21 @@ posts = Post.all
 
 # Comment
 
-100.times do
+50.times do
 
 	Comment.create!(
-		user: users.sample,
-		post: posts.sample,													#Picks a random post from the array
-		body: RandomData.random_paragraph
+		user: users.sample,													#Picks a random post from the array
+		body: RandomData.random_paragraph,
+		commentable: posts.sample
+	)
+end
+
+50.times do
+
+	Comment.create!(
+		user: users.sample,													#Picks a random post from the array
+		body: RandomData.random_paragraph,
+		commentable: topics.sample
 	)
 end
 

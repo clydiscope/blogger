@@ -10,15 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_15_025111) do
+ActiveRecord::Schema.define(version: 2021_02_10_155130) do
+
+  create_table "commentings", force: :cascade do |t|
+    t.integer "comment_id"
+    t.string "commentable_type"
+    t.integer "commentable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["comment_id"], name: "index_commentings_on_comment_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_commentings_on_commentable_type_and_commentable_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text "body"
-    t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.string "commentable_type", null: false
+    t.integer "commentable_id", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -84,7 +95,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_025111) do
     t.integer "role"
   end
 
-  add_foreign_key "comments", "posts"
+  add_foreign_key "commentings", "comments"
   add_foreign_key "comments", "users"
   add_foreign_key "labelings", "labels"
 end
