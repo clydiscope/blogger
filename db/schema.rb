@@ -49,14 +49,6 @@ ActiveRecord::Schema.define(version: 2021_01_15_025111) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.boolean "resolved"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "sponsored_posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
