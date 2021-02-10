@@ -42,7 +42,7 @@ class CommentsController < ApplicationController
 			comment = parent.comments.find(params[:id])
 			if comment.destroy
 				flash[:notice] = "Comment was deleted successfully"
-				redirect_to [@post.topic, @post]
+				redirect_to [parent.topic, parent]
 			else
 				flash[:alert] = "Comment couldn't be deleted. Please try again."
 				redirect_to [parent.topic, parent]
