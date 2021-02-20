@@ -13,6 +13,9 @@ RSpec.describe Post, type: :model do
   
   let(:post) { topic.posts.create!(title: title, body: body, user: user) }
   
+  let(:user_post)  {topic.posts.create!(title:RandomData.random_sentence, body:RandomData.random_paragraph, user:user )}
+  
+  
   it { is_expected.to have_many(:labelings) }
   it { is_expected.to have_many(:labels).through(:labelings) }
   
@@ -82,5 +85,13 @@ RSpec.describe Post, type: :model do
         expect(post.rank).to eq (old_rank - 1)
       end
     end
+    
+    describe "#create_vote" do
+      
+      it "adds an upvote to a users post after it's created" do
+        expect(user_post.points).to eq (1)
+      end
+    end
+    
   end
 end

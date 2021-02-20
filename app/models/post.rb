@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+	after_create :create_vote
+
 	belongs_to :topic
 	belongs_to :user
 	
@@ -31,6 +33,12 @@ class Post < ApplicationRecord
 		age_in_days = (created_at - Time.new(1970,1,1)) / 1.day.seconds
 		new_rank = points + age_in_days
 		update(rank: new_rank)
+	end
+	
+	private
+	
+	def create_vote
+		user.votes.create(post: self, value: 1)
 	end
 	
 end
